@@ -1,0 +1,11 @@
+n=4;
+x=input("enter the sequence(Use Brackets):");
+t=0:n-1;
+subplot(3,1,1);
+stem(t,x);
+xlabel('time');
+ylabel('amplitude');
+subplot(3,1,2);
+stem(0:n-1,abs(ifft(x)));
+xlabel('t)');
+ylabel('amplitude');
