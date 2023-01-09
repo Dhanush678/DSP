@@ -1,0 +1,39 @@
+clc
+clear;
+close all;
+t=0.001:0.001:1;
+D=2*sin(2*pi*50*t);
+n=numel(D);
+A=D(1:n)+0.9*rand(1,n);
+M=25;
+w=zeros(1,M);
+wi=zeros(1,M);
+E=[];
+mu=0.5;
+den=A(1,:)*A(1,:)'+0.001;
+for i=M:n
+    E(i) =D(i)-wi*A(i:-1:i-M+1)';
+    wi=wi+2*(mu/den)*E(i)*A(i:-1:i-M+1);
+end
+for i=M:n
+    j=A(i:-1:i-M+1);
+    Est(i)=((wi)*(j)');
+end
+Err=Est-D;
+subplot(412)
+plot(D)
+title("desired signal")
+grid on;
+
+subplot(411)
+plot(A)
+title("input signal")
+grid on;
+subplot(413)
+plot(Est)
+title("obtained output")
+grid on;
+subplot(414)
+plot(Err)
+title("error signal")
+grid on;
