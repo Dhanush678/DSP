@@ -1,0 +1,26 @@
+clc;
+clear all;
+N=4;
+n=1:N;
+k=1:N;
+t=0:3;
+x(n)=[1 -2 3 -4]
+LHS=fft(x);
+subplot(2,2,1);
+stem(t,abs(LHS));
+tittle('magnitude of LHS');
+y label('k');
+subplot(2,2,2);
+stem(t,ang(LHS));
+tittle('phase of LHS');
+y label('phase');
+x label('k');
+RHS=fft(x(mod(m+N,N+1)+1));
+subplot(2,2,3);
+stem(t,abs(RHS));
+tittle('magnitude of RHS');
+y label('amplitude');
+x label('k');
+subplot(2,2,4);
+stem(t,angle(RHS));
+tittle('phase of (RHS)');
